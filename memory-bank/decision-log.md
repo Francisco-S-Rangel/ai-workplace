@@ -63,3 +63,48 @@ the code looks like this without re-deriving it — topic 8 (memory bank) and to
   `.claude/agents/`". Sub-agents are still defined as `.claude/agents/*.md`.
 - **Impact:** the demo shows the agent files, plus asking Claude "which sub-agents are available?",
   instead of relying on the `/agents` UI.
+
+## 2026-09-27 — Claude Code formats checked against the official docs
+- **Hooks** (code.claude.com/docs/en/hooks): `hooks.<Event>[].matcher` + `hooks[].type: command`.
+  PreToolUse exit 2 blocks the call and stderr goes to Claude. Stop exit 2 would keep Claude
+  working, so the reminder uses exit 0 plus a JSON `systemMessage`. On Windows, hook commands
+  run through Git Bash if it's installed, so `${CLAUDE_PROJECT_DIR}` expands.
+- **Permissions** (docs/en/permissions): the Bash prefix form is now `Bash(cmd *)`, and the
+  spec's `Bash(cmd:*)` is an equivalent legacy form. I used the space form. Path rules work
+  only for `Read(...)`/`Edit(...)`, and `Write(path)` is never consulted, so writes to the index
+  are denied with `Edit(./data/index.json)`. Read deny rules also cover `cat`/`head` in Bash but
+  not `grep -r`, which is why the hook exists. The PowerShell tool needs its own rules
+  (`PowerShell(Remove-Item *)`), because `Bash(rm *)` doesn't cover it.
+- **Sub-agents** (docs/en/sub-agents): frontmatter `name`, `description`, `tools`, `model`,
+  plus an optional per-agent `hooks:`. The `/agents` wizard is gone; list agents by asking
+  Claude, typing `@`, or `/tasks`.
+- **Skills / commands** (docs/en/skills): skills use `name` + `description` (+ `argument-hint`).
+  `.claude/commands/*.md` still works and is treated like a skill (skills are recommended for new
+  work). The commands are kept as the spec asks.
+
+## 2026-09-27 — Read-only reviewer that can still hand off
+- **Decision:** `code-reviewer` has `Read, Grep, Glob, Write`, and an agent-scoped PreToolUse
+  hook (`restrict_writes.py .agent-handoff/`) limits Write to the hand-off folder. `test-writer`
+  is limited to `tests/` + `.agent-handoff/`.
+- **Alternatives:** no Write at all (then it can't hand off through a file); the parent copies the
+  summary into a file (loses detail).
+- **Why:** frontmatter tool lists are all-or-nothing, and a hook adds path-level least privilege.
+  The orchestrator writes `diff.patch` because the reviewer has no Bash to run `git diff`.
+
+## 2026-09-27 — `inspect_chunks.py` lives inside the skill folder
+- **Decision:** `.claude/skills/rag-debug/scripts/inspect_chunks.py` instead of `scripts/`.
+- **Why:** it shows that a skill ships its own tooling. The spec allowed either location.
+
+## 2026-09-27 — Hooks verified live in the build session
+- The deny rule blocked Read of the fake key ("denied by your permission settings").
+- The hook blocked `grep -r FAKE` on the protected folder (`[guard_paths hook] …`).
+- The PostToolUse hook reformatted an ugly `.py` file right after Write.
+- Also covered by `tests/test_hooks.py` (21 cases).
+
+## 2026-09-27 — The guard hook matches command TEXT (known false positive)
+- **Observation:** the hook blocked a Bash heredoc that only *wrote documentation mentioning*
+  the protected folder name. The regex can't tell intent from text.
+- **Decision:** keep it strict (fail closed) for the demo. Write docs with the Write/Edit tools,
+  which the hook checks by path, not content.
+- **Talking point:** text-matching guards trade false positives for safety. OS-level sandboxing
+  enforces by actual file access instead of by command text.

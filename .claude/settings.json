@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(pytest *)",
+      "Bash(.venv/Scripts/python.exe -m pytest *)",
+      "Bash(python -m study_buddy.cli *)",
+      "Bash(.venv/Scripts/python.exe -m study_buddy.cli *)",
+      "Bash(.venv/Scripts/python.exe scripts/list_mcp_tools.py *)",
+      "Bash(ruff *)",
+      "Bash(.venv/Scripts/ruff.exe *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "mcp__study-notes__*"
+    ],
+    "deny": [
+      "Read(./secrets/**)",
+      "Edit(./secrets/**)",
+      "Read(./.env)",
+      "Edit(./data/index.json)",
+      "Bash(git push *)",
+      "Bash(rm *)",
+      "PowerShell(git push *)",
+      "PowerShell(Remove-Item *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|Bash|PowerShell|Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard_paths.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/format_python.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/.claude/hooks/remind_memory_bank.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

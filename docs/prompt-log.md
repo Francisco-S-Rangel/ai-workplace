@@ -12,6 +12,7 @@ so the process can be reviewed and repeated, not just the result.
 | 2 | 2026-09-27 | Execute | Phase 1 — scaffold. | Found that `mcp` 2.x renamed FastMCP → pinned `<2` (see decision log). |
 | 3 | 2026-09-27 | Execute | Phase 2 — RAG core ("go"). | 7 notes, heading+size chunking, BM25, CLI, 10 tests, hit@3 = 1.00. |
 | 4 | 2026-09-27 | Execute | Phase 3 — MCP ("go"). | FastMCP server (3 read-only tools + 1 resource), SDK list script, `claude mcp get` shows it pending approval. |
+| 5 | 2026-09-27 | Execute | Phase 4 — Claude Code controls ("go"). | Checked formats against the official docs first. Deny rule + hook blocked the fake key live, the format hook fired live, 34 tests. The hook also blocked one of my own heredocs (false positive, logged). |
 
 ## Template for new entries
 - **Prompt:** what I asked (keep the key constraints verbatim).
