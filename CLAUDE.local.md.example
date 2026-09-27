@@ -1,0 +1,14 @@
+<!--
+CLAUDE.local.md.example — WHY: shows the LOCAL (personal, not committed) instruction level.
+Copy to `CLAUDE.local.md` (gitignored) for preferences that are yours only.
+Topic 2: storage levels — local instructions sit alongside the project CLAUDE.md but are
+never shared with the team. (Newer Claude Code docs also suggest `@~/...` imports in
+CLAUDE.md for personal files — see docs/storage-levels.md.)
+-->
+
+# My personal notes for this repo (example)
+
+- Answer me in short bullet points.
+- I am preparing for the AI Assessment; when you explain something, name the concept
+  (e.g. "this is lost-in-the-middle") so I can study it.
+- My local Python is at `.venv\Scripts\python.exe`.

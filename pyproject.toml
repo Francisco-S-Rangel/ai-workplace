@@ -1,0 +1,32 @@
+# pyproject.toml — WHY: single place for dependencies and tool config (pytest, ruff).
+# Assessment topic: project instructions / definition of done — `CLAUDE.md` points the agent
+# at the commands configured here, so "tests + ruff pass" is checkable, not a vibe.
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "study-buddy"
+version = "0.1.0"
+description = "Tiny local RAG over markdown notes, exposed to Claude Code via MCP (assessment demo)."
+requires-python = ">=3.11"
+# mcp is pinned below 2.0: v2 renamed FastMCP -> MCPServer (see memory-bank/decision-log.md).
+dependencies = ["mcp>=1.2,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.setuptools]
+packages = ["study_buddy", "mcp_server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
