@@ -8,8 +8,11 @@ conversation is summarized (topic 5: context management; topic 8: memory bank).
 
 _Last updated: 2026-09-27_
 
-- **Current focus:** Phase 6 is done (ASSESSMENT-MAP with 34 questions, DEMO-SCRIPT, 6 concept pages, levels, value case).
-- **Next step:** Phase 7 — the final verification checklist (spec §5).
-- **Open questions:** the user still has to check `/mcp` approval, `/review-parallel` and `/ask-notes` in a fresh session.
-- **Watch out:** the guard hook blocks ANY shell command whose text names the protected folder or
-  `.env`, including heredocs and commit messages. Use Write/Edit for docs that mention them.
+- **Current focus:** all 7 phases are done; the repo is ready for the demo.
+- **Done this session:** built and verified everything; see the checklist in `progress.md`.
+- **Next step (user):** in a fresh `claude` session, approve `study-notes` in `/mcp`, then rehearse
+  `docs/DEMO-SCRIPT.md`, including `/review-parallel`, `/rag-debug` and `/ask-notes`.
+- **Open questions:** official assessment wording (the map uses reconstructed questions);
+  "verify in docs" cells in `docs/other-tools.md` (mostly Kimi, whose CLI repo is archived).
+- **Watch out:** the guard hook blocks any shell command whose text names the protected folder
+  or `.env`. `/agents` is removed; ask "which sub-agents are available?". The MCP SDK is pinned `<2`.
