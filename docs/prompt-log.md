@@ -14,6 +14,7 @@ so the process can be reviewed and repeated, not just the result.
 | 4 | 2026-09-27 | Execute | Phase 3 — MCP ("go"). | FastMCP server (3 read-only tools + 1 resource), SDK list script, `claude mcp get` shows it pending approval. |
 | 5 | 2026-09-27 | Execute | Phase 4 — Claude Code controls ("go"). | Checked formats against the official docs first. Deny rule + hook blocked the fake key live, the format hook fired live, 34 tests. The hook also blocked one of my own heredocs (false positive, logged). |
 | 6 | 2026-09-27 | Execute | Phase 5 — comparison docs ("go"). | Fetched the Cursor, Qwen Code and Kimi docs; built the storage-levels + other-tools tables; unconfirmed cells marked "verify in docs". |
+| 7 | 2026-09-27 | Execute | Phase 6 — study docs ("go"). | 34-question map, demo script, 6 concept pages, levels, value case. Measured that chunk size cannot break the eval, so the regression demo uses a code bug instead. |
 
 ## Template for new entries
 - **Prompt:** what I asked (keep the key constraints verbatim).

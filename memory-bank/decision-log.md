@@ -120,3 +120,12 @@ the code looks like this without re-deriving it — topic 8 (memory bank) and to
 - **Notable:** `MoonshotAI/kimi-cli` was archived on 2026-09-23 in favor of "Kimi Code CLI"
   (whose repo URL returned 404), so most Kimi cells stay unverified. Qwen Code's custom
   commands moved from `.toml` to `.md`.
+
+## 2026-09-27 — Regression demo uses a code bug, not a parameter change
+- **Measured:** hit@3 stays at 0.9–1.0 for chunk sizes from 4 to 2000 words (7 notes, each topic
+  has distinctive vocabulary), so tuning parameters can't show the eval failing.
+- **Decision:** the live demo flips `reverse=True` → `reverse=False` in `retrieve.py`
+  (hit@3 → 0.60, which fails the 0.8 gate), then undoes it with `/rewind`.
+- **Also:** the assessment questions in `docs/ASSESSMENT-MAP.md` are reconstructed from the 14
+  topics (no official list was available), and the level definitions in `docs/levels.md` are
+  my interpretation. Both are marked as such.

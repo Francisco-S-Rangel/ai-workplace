@@ -13,5 +13,5 @@ Survives /compact and /clear because it lives on disk, not in the chat — this 
 | 3 | MCP server + .mcp.json + list_mcp_tools.py + docs/mcp.md | done |
 | 4 | Settings/permissions, hooks, skills, sub-agents, commands | done |
 | 5 | storage-levels.md + other-tools.md | done |
-| 6 | ASSESSMENT-MAP, DEMO-SCRIPT, concepts, levels, value case | todo |
+| 6 | ASSESSMENT-MAP, DEMO-SCRIPT, concepts, levels, value case | done |
 | 7 | Final verification | todo |
