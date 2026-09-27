@@ -10,6 +10,7 @@ so the process can be reviewed and repeated, not just the result.
 |---|---|---|---|---|
 | 1 | 2026-09-27 | Plan mode | Pasted the full build plan (`AI-Workplace-Plan.md`): goal, hard constraints, the 14 assessment topics, the "Study Buddy" app, the Claude Code config, docs, 7 phases, and a verification checklist. | Claude explored the (empty) folder, checked the Python/git/Claude versions, wrote an execution plan (venv, doc-verified formats, commit per phase), and got it approved. |
 | 2 | 2026-09-27 | Execute | Phase 1 — scaffold. | Found that `mcp` 2.x renamed FastMCP → pinned `<2` (see decision log). |
+| 3 | 2026-09-27 | Execute | Phase 2 — RAG core ("go"). | 7 notes, heading+size chunking, BM25, CLI, 10 tests, hit@3 = 1.00. |
 
 ## Template for new entries
 - **Prompt:** what I asked (keep the key constraints verbatim).

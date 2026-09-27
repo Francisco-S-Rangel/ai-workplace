@@ -8,7 +8,7 @@ conversation is summarized (topic 5: context management; topic 8: memory bank).
 
 _Last updated: 2026-09-27_
 
-- **Current focus:** Phase 1 — scaffold (pyproject, CLAUDE.md files, memory bank, git).
-- **Next step:** Phase 2 — study_buddy core (ingest, BM25, index, CLI) + notes + tests + eval.
+- **Current focus:** Phase 2 is done (RAG core, 7 notes, tests, eval hit@3 = 1.00).
+- **Next step:** Phase 3 — the FastMCP stdio server, `.mcp.json`, `scripts/list_mcp_tools.py`, `docs/mcp.md`.
 - **Open questions:** none.
-- **Watch out:** MCP SDK pinned `<2` (FastMCP API). Use `.venv\Scripts\python.exe`.
+- **Watch out:** the MCP SDK is pinned `<2` (FastMCP API). Use `.venv\Scripts\python.exe`.

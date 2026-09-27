@@ -9,7 +9,7 @@ Survives /compact and /clear because it lives on disk, not in the chat — this 
 | Phase | Content | Status |
 |---|---|---|
 | 1 | Scaffold, pyproject, CLAUDE.md (root + nested), memory bank, git | done |
-| 2 | study_buddy core + knowledge notes + tests + eval | todo |
+| 2 | study_buddy core + knowledge notes + tests + eval | done |
 | 3 | MCP server + .mcp.json + list_mcp_tools.py + docs/mcp.md | todo |
 | 4 | Settings/permissions, hooks, skills, sub-agents, commands | todo |
 | 5 | storage-levels.md + other-tools.md | todo |

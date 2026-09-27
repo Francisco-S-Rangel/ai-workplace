@@ -34,3 +34,17 @@ the code looks like this without re-deriving it — topic 8 (memory bank) and to
 - **Decision:** JSON can't contain comments. `.claude/settings.json` and `.mcp.json` are
   explained in `docs/` (`docs/mcp.md`, `docs/storage-levels.md`) instead of adding
   unknown keys that a strict schema might reject.
+
+## 2026-09-27 — Chunking defaults: 120 words, 20 overlap, split by heading first
+- **Decision:** split on markdown headings, then use word windows (`chunk_size=120`, `overlap=20`).
+  The heading is indexed along with the body.
+- **Alternatives:** fixed character windows; sentence splitting; token-based sizes.
+- **Why:** headings mark topic boundaries in these notes. Words are easy to explain. The
+  result is 37 chunks averaging about 72 words, with hit@3 = 1.00 on the 10-question eval.
+
+## 2026-09-27 — The eval builds the index fresh
+- **Decision:** `tests/test_rag_eval.py` rebuilds from `docs/knowledge/` instead of reading
+  `data/index.json`, with a threshold of hit@3 >= 0.8.
+- **Why:** the eval should measure the current code, not a stale committed index.
+  (`eval_set.jsonl` has no header comment because JSONL can't hold comments; the test file
+  documents it.)

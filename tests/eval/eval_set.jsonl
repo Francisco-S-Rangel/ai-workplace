@@ -1,0 +1,10 @@
+{"question": "what is lost in the middle?", "expected_source": "context-window.md"}
+{"question": "which prompting techniques make answers checkable?", "expected_source": "context-window.md"}
+{"question": "what compaction and summarization strategies exist when the conversation is too long?", "expected_source": "context-management.md"}
+{"question": "how do checkpoints and rewind work?", "expected_source": "context-management.md"}
+{"question": "why is RAG better than pasting a whole document into the prompt?", "expected_source": "rag-basics.md"}
+{"question": "how should documents be chunked with overlap?", "expected_source": "rag-basics.md"}
+{"question": "how do I retrieve the full list of capabilities of an MCP server?", "expected_source": "mcp-overview.md"}
+{"question": "when should I use a hook instead of a skill?", "expected_source": "claude-code-building-blocks.md"}
+{"question": "why is a follow-up prompt almost free with prompt caching?", "expected_source": "reliability.md"}
+{"question": "why do sub-agents hand off results through files?", "expected_source": "agents-and-orchestration.md"}
