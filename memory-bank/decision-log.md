@@ -108,3 +108,15 @@ the code looks like this without re-deriving it — topic 8 (memory bank) and to
   which the hook checks by path, not content.
 - **Talking point:** text-matching guards trade false positives for safety. OS-level sandboxing
   enforces by actual file access instead of by command text.
+
+## 2026-09-27 — Agents and skills discovered live
+- After Phase 4, the running session announced the 3 sub-agents (`code-reviewer`,
+  `rag-evaluator`, `test-writer`) and 5 skills/commands (`add-knowledge-note`, `rag-debug`,
+  `ask-notes`, `checkpoint`, `review-parallel`) with no restart, which confirms the frontmatter is valid.
+
+## 2026-09-27 — The other-tools comparison is sourced, gaps marked
+- **Decision:** every cell in `docs/other-tools.md` comes from a docs page fetched on 2026-09-27,
+  or is marked "verify in docs".
+- **Notable:** `MoonshotAI/kimi-cli` was archived on 2026-09-23 in favor of "Kimi Code CLI"
+  (whose repo URL returned 404), so most Kimi cells stay unverified. Qwen Code's custom
+  commands moved from `.toml` to `.md`.

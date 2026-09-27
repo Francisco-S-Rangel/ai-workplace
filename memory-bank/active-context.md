@@ -8,8 +8,8 @@ conversation is summarized (topic 5: context management; topic 8: memory bank).
 
 _Last updated: 2026-09-27_
 
-- **Current focus:** Phase 4 is done (settings, 4 hooks, 2 skills, 3 agents, 3 commands; 34 tests green).
-- **Next step:** Phase 5 — `docs/storage-levels.md` + `docs/other-tools.md`.
+- **Current focus:** Phase 5 is done (`docs/storage-levels.md`, `docs/other-tools.md`, sourced from docs).
+- **Next step:** Phase 6 — ASSESSMENT-MAP, DEMO-SCRIPT, concepts/, levels, value case.
 - **Open questions:** the user still has to check `/mcp` approval, `/review-parallel` and `/ask-notes` in a fresh session.
 - **Watch out:** the guard hook blocks ANY shell command whose text names the protected folder or
   `.env`, including heredocs and commit messages. Use Write/Edit for docs that mention them.

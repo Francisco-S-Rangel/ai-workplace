@@ -13,6 +13,7 @@ so the process can be reviewed and repeated, not just the result.
 | 3 | 2026-09-27 | Execute | Phase 2 — RAG core ("go"). | 7 notes, heading+size chunking, BM25, CLI, 10 tests, hit@3 = 1.00. |
 | 4 | 2026-09-27 | Execute | Phase 3 — MCP ("go"). | FastMCP server (3 read-only tools + 1 resource), SDK list script, `claude mcp get` shows it pending approval. |
 | 5 | 2026-09-27 | Execute | Phase 4 — Claude Code controls ("go"). | Checked formats against the official docs first. Deny rule + hook blocked the fake key live, the format hook fired live, 34 tests. The hook also blocked one of my own heredocs (false positive, logged). |
+| 6 | 2026-09-27 | Execute | Phase 5 — comparison docs ("go"). | Fetched the Cursor, Qwen Code and Kimi docs; built the storage-levels + other-tools tables; unconfirmed cells marked "verify in docs". |
 
 ## Template for new entries
 - **Prompt:** what I asked (keep the key constraints verbatim).
