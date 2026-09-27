@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "study-notes": {
+      "type": "stdio",
+      "command": ".venv/Scripts/python.exe",
+      "args": ["-m", "mcp_server.server"],
+      "env": {}
+    }
+  }
+}

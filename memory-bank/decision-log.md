@@ -48,3 +48,18 @@ the code looks like this without re-deriving it — topic 8 (memory bank) and to
 - **Why:** the eval should measure the current code, not a stale committed index.
   (`eval_set.jsonl` has no header comment because JSONL can't hold comments; the test file
   documents it.)
+
+## 2026-09-27 — `.mcp.json` uses a relative venv command
+- **Decision:** `"command": ".venv/Scripts/python.exe"` (relative to the repo root, where
+  Claude Code starts project servers). The package is installed editable (`pip install -e .`),
+  so `-m mcp_server.server` imports from any working directory.
+- **Alternatives:** `"command": "python"` (would pick the system Python, which doesn't have `mcp`);
+  an absolute path (breaks on other machines).
+- **Verified:** `claude mcp get study-notes` reads it as project scope and "Pending approval".
+  Connecting after approval has to be checked interactively with `/mcp`.
+
+## 2026-09-27 — `/agents` wizard removed in Claude Code 2.1.283
+- **Observation:** running `/agents` prints "The /agents wizard has been removed … edit
+  `.claude/agents/`". Sub-agents are still defined as `.claude/agents/*.md`.
+- **Impact:** the demo shows the agent files, plus asking Claude "which sub-agents are available?",
+  instead of relying on the `/agents` UI.
